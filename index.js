@@ -7,6 +7,7 @@ const createWin = () => {
         maximizable: false,
         resizable: false,
         autoHideMenuBar: true,
+        icon: "./images/logo.ico",
         webPreferences: {
             devTools: true,
             nodeIntegration: true,
