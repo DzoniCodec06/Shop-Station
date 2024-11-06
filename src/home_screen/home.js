@@ -20,7 +20,7 @@ stockApp.addEventListener("click", () => {
     ipcRenderer.send("msg-from-home", "load-stock-app");
 })
 
-let theme = "dark";
+let theme;
 
 window.onload = () => {
     fs.readFile("../theme.txt", "utf-8", (err, data) => {

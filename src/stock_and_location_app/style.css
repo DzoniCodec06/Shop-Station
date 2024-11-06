@@ -11,39 +11,22 @@ body {
     overflow-x: hidden;
 }
 
+.dark-theme {
+    background: #2B2B2B;
+}
+
 header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 5px 1rem;
     box-shadow: 0px 10px 60px #0000001f;
 }
 
-#sun {
-    width: 30px;
-    height: 30px;
-}
-
-header button {
-    border-radius: 15px;
-    padding: 5px 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.dark-btn {
-    background: #2B2B2B;
-    border: 1px solid #444444;
-}
-
-.light-btn {
-    background: #fff;
-    border: 1px solid #DEDEDE;
-    box-shadow: 0px 0px 10px #0000001e;
+.dark-theme header {
+    box-shadow: 0px 2px 10px #00000023;
+    background: #232323;
 }
 
 .search-bar {
@@ -54,6 +37,15 @@ header button {
     flex-direction: row;
     align-items: center;
     box-shadow: 2px 4px 20px #0000001e;
+}
+
+.dark-theme .search-bar {
+    background-color: #333333;
+    border: 1px solid #4d4d4d;
+}
+
+.dark-theme .search-bar input {
+    color: #fff;
 }
 
 header .search-bar input {
@@ -75,9 +67,17 @@ header .search-bar input {
     margin-right: 5px;
 }
 
+.dark-theme .search-bar i {
+    color: #fff;
+}
+
 header h1 {
     width: 100%;
     text-align: center;
+}
+
+.dark-theme h1 {
+    color: #fff;
 }
 
 .container {
@@ -104,6 +104,17 @@ header h1 {
     padding: 5px 15px;
     font-family: "Poppins", sans-serif;
     z-index: 1;
+    transition: all ease-in 0.1s;
+}
+
+.dark-theme .container button.add:hover {
+    background: #252525;
+}
+
+.dark-theme .container button.add {
+    background: #202020;
+    border: 1px solid #444444;
+    color: #fff;
 }
 
 table {
@@ -120,6 +131,11 @@ th {
     border-right: 1px solid black;
 }
 
+.dark-theme th {
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
 .article td:last-child {
     border: none;
 }
@@ -130,12 +146,28 @@ tr {
 
 tr.article {
     background-color: #E6E6E6;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+
+.dark-theme tr.article {
+    background: #444444;
+}
+
+.dark-theme tr.article:hover {
+    background-color: #505050;
 }
 
 td {
     width: 3vw;
     border-right: 1px solid #ffffff;
     padding: 5px 10px;
+}
+
+.dark-theme td {
+    border-right: 1px solid transparent;
+    color: #fff;
 }
 
 .article {
@@ -157,6 +189,10 @@ td {
 td.btns {
     width: 1vw;
     cursor: pointer;
+}
+
+.sku-th, .sku {
+    width: 10px;
 }
 
 .num {
@@ -190,6 +226,10 @@ td.btns {
     transition: all ease-in 0.3s;
 }
 
+.dark-theme .add-product {
+    color: #fff;
+}
+
 .sides {
     display: flex;
     flex-direction: row;
@@ -208,6 +248,12 @@ td.btns {
     font-size: 15px;
     font-family: "Poppins", sans-serif;
     width: 15vw;
+}
+
+.dark-theme .side input {
+    background-color: #444444;
+    border: 1px solid #4d4d4d;
+    color: #fff;
 }
 
 .add-header {
@@ -233,6 +279,11 @@ td.btns {
     cursor: pointer;
 }
 
+.dark-theme #close {
+    color: #fff;
+    box-shadow: 0px 0px 10px #ffffff31;
+}
+
 #close p {
     rotate: 45deg;
 }
@@ -246,6 +297,38 @@ td.btns {
     margin-inline: 40%;
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+.dark-theme .add-btn {
+    background-color: #444444;
+    border: 1px solid #4d4d4d;
+    color: #fff;
+}
+
+#sun {
+    width: 30px;
+    height: 30px;
+}
+
+header button {
+    border-radius: 15px;
+    padding: 5px 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dark-btn {
+    background: #2B2B2B;
+    border: 1px solid #444444;
+}
+
+.light-btn {
+    background: #fff;
+    border: 1px solid #DEDEDE;
+    box-shadow: 0px 0px 10px #0000001e;
 }
 
 /*

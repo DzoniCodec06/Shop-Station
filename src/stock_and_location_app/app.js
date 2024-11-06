@@ -1,6 +1,7 @@
 const sqlite3 = require("sqlite3");
+const fs = require("fs");
 
-const db = new sqlite3.Database("./database/database.sqlite");
+const db = new sqlite3.Database("./database.sqlite");
 
 const table = document.getElementById("tabla");
 
@@ -26,6 +27,11 @@ const qtyInput = document.getElementById("qty_input");
 
 const saveBtn = document.getElementById("addBtn");
 
+const bodyEl = document.getElementById("bodyEl");
+
+const themeBtn = document.getElementById("theme-btn");
+const themeImg = document.getElementById("sun");
+
 addBtn.addEventListener("click", () => {
     addProductField.classList.replace("add-product-false", "add-product");
     containerField.classList.replace("container", "container-false");
@@ -35,6 +41,65 @@ closeBtn.addEventListener("click", () => {
     addProductField.classList.replace("add-product", "add-product-false");
     containerField.classList.replace("container-false", "container");
 });
+
+let theme;
+
+fs.readFile("../theme.txt", "utf-8", (err, data) => {
+    if (err) console.error(err);
+    else {
+        console.log(data);
+        theme = data;
+        if (theme == "light") setLightTheme();
+        else if (theme == "dark") setDarkTheme();
+    }
+})
+/*
+document.addEventListener("load", () => {
+    fs.readFile("../theme.txt", "utf-8", (err, data) => {
+        if (err) console.error(err);
+        else {
+            theme = data;
+            if (theme == "light") setLightTheme();
+            else if (theme == "dark") setDarkTheme();
+        }
+    })
+})*/
+
+const setLightTheme = () => {
+    bodyEl.classList.remove("dark-theme");
+    themeBtn.classList.replace("dark-btn", "light-btn");
+
+    themeImg.src = "../../images/moon-solid.svg";
+}
+
+const setDarkTheme = () => {
+    bodyEl.classList.add("dark-theme");
+
+    themeBtn.classList.replace("light-btn", "dark-btn");
+    themeImg.src = "../../images/sun-icon.png";
+}
+
+themeBtn.addEventListener("click", () => {
+    if (theme == "dark") {
+
+        theme = "light";
+
+        fs.writeFile("../theme.txt", "light", (err) => {
+            if (err) console.error(err);
+        });
+        
+        setLightTheme();
+        
+    } else if (theme == "light") {
+        theme = "dark";
+
+        fs.writeFile("../theme.txt", "dark", (err) => {
+            if (err) console.error(err);
+        });
+
+        setDarkTheme();
+    }
+})
 
 function deleteFunc(e) {
     let selectedRow = e.target.id.split("-")[1];
@@ -82,10 +147,11 @@ function setProducts() {
             createArticle();*/
             let tr = document.createElement("tr");
             tr.classList.add("article");
-    
+
+            /*
             let tdNum = document.createElement("td");
             tdNum.innerHTML = `${product.productId}`;
-            tdNum.classList.add("num");
+            tdNum.classList.add("num"); */
     
             let tdSKU = document.createElement("td");
             tdSKU.innerHTML = `${product.sku}`;
@@ -126,7 +192,7 @@ function setProducts() {
 
             deleteBtn = tdDelBtn;
             
-            let listOfTds = [tdNum, tdSKU, tdName, tdBarcode, tdQty, tdLoc, tdDesc, tdEditBtn, tdDelBtn];
+            let listOfTds = [tdSKU, tdName, tdBarcode, tdQty, tdLoc, tdDesc, tdEditBtn, tdDelBtn];
 
             listOfAllProducts = listOfTds;
     
@@ -145,10 +211,11 @@ function refreshProducts() {
         else {
             let tr = document.createElement("tr");
             tr.classList.add("article");
-    
+            
+            /*
             let tdNum = document.createElement("td");
             tdNum.innerHTML = `${product.productId}`;
-            tdNum.classList.add("num");
+            tdNum.classList.add("num");*/
     
             let tdSKU = document.createElement("td");
             tdSKU.innerHTML = `${product.sku}`;
@@ -187,7 +254,7 @@ function refreshProducts() {
 
             tdDelBtn.addEventListener("click", deleteFunc);
             
-            let listOfTds = [tdNum, tdSKU, tdName, tdBarcode, tdQty, tdLoc, tdDesc, tdEditBtn, tdDelBtn];
+            let listOfTds = [tdSKU, tdName, tdBarcode, tdQty, tdLoc, tdDesc, tdEditBtn, tdDelBtn];
 
             listOfAllProducts = listOfTds;
     
