@@ -212,13 +212,13 @@ td.btns {
     display: none;
 }
 
-.add-product-false .center {
+.add-product-false .center, .preview-false {
     display: none;
     width: 0px;
     height: 0px;
     z-index: 0;
 }
-.add-product {
+.add-product, .preview-true {
     display: flex;
     flex-direction: column;
     width: min-content;
@@ -226,8 +226,12 @@ td.btns {
     transition: all ease-in 0.3s;
 }
 
-.dark-theme .add-product {
+.dark-theme .add-product, .dark-theme .preview-true {
     color: #fff;
+}
+
+.preview-true {
+    color: #000;
 }
 
 .sides {
@@ -265,7 +269,7 @@ td.btns {
     box-shadow: 0px 10px 60px #0000001f;
 }
 
-#close {
+#close, #close-preview {
     background-color: transparent;
     font-size: 30px;
     border: none;
@@ -279,12 +283,12 @@ td.btns {
     cursor: pointer;
 }
 
-.dark-theme #close {
+.dark-theme #close, .dark-theme #close-preview {
     color: #fff;
     box-shadow: 0px 0px 10px #ffffff31;
 }
 
-#close p {
+#close p, #close-preview p {
     rotate: 45deg;
 }
 
