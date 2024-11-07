@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 
 let homeScreen = "./src/home_screen/index.html";
 let stockScreen = "./src/stock_and_location_app/index.html";
@@ -58,5 +58,6 @@ ipcMain.on("msg-from-home", (event, arg) => {
     console.log(BrowserWindow.getAllWindows().forEach(window => {
         window.close();
         createStockAppWin();
+        ipcMain.emit("stock-win");
     }))
 })
